@@ -1,0 +1,46 @@
+{{ $isES := eq site.Language.Lang "es" }}
+{{ $home := site.Home.RelPermalink }}
+{{ $prefix := cond $isES "/es" "" }}
+{{ $translationURL := cond $isES ("/" | relURL) ("/es/" | relURL) }}
+{{ range .Translations }}{{ $translationURL = .RelPermalink }}{{ end }}
+<header class="site-header" data-header>
+  <div class="shell header-inner">
+    <a class="brand" href="{{ $home }}" aria-label="Neider Olaya, {{ if $isES }}inicio{{ else }}home{{ end }}">
+      <span class="brand-mark" aria-hidden="true">NO</span>
+      <span class="brand-copy"><strong>Neider Olaya</strong><small>Data Science</small></span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+      <span class="sr-only">{{ if $isES }}Abrir navegación{{ else }}Open navigation{{ end }}</span>
+      <span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="{{ if $isES }}Navegación principal{{ else }}Primary navigation{{ end }}" data-nav>
+      {{ $items := slice
+        (dict "section" "work" "label" (cond $isES "Casos" "Work"))
+        (dict "section" "experience" "label" (cond $isES "Experiencia" "Experience"))
+        (dict "section" "expertise" "label" (cond $isES "Especialidad" "Expertise"))
+      }}
+      {{ range $items }}
+        {{ $active := eq $.Section .section }}
+        {{ $itemURL := printf "%s/%s/" $prefix .section }}
+        <a{{ if $active }} class="is-active" aria-current="page"{{ end }} href="{{ $itemURL | relURL }}">{{ .label }}</a>
+      {{ end }}
+      <a href="{{ (printf "%s/#about" $prefix) | relURL }}">{{ if $isES }}Perfil{{ else }}About{{ end }}</a>
+      {{ $contactActive := eq .TranslationKey "contact" }}
+      <a class="nav-contact{{ if $contactActive }} is-active{{ end }}"{{ if $contactActive }} aria-current="page"{{ end }} href="{{ (printf "%s/contact/" $prefix) | relURL }}">{{ if $isES }}Contacto{{ else }}Contact{{ end }}</a>
+    </nav>
+
+    <div class="header-actions">
+      {{ if not $isES }}
+        <a class="language-link" href="{{ $translationURL }}" lang="es" hreflang="es">ES</a>
+      {{ else }}
+        <a class="language-link" href="{{ $translationURL }}" lang="en" hreflang="en">EN</a>
+      {{ end }}
+      <button class="theme-toggle" type="button" aria-label="{{ if $isES }}Cambiar tema{{ else }}Change theme{{ end }}" data-theme-toggle>
+        <span class="theme-icon" aria-hidden="true">◐</span>
+      </button>
+      <a class="button button-small" href="{{ site.Params.resume | relURL }}" target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>

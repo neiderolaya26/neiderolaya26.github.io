@@ -1,0 +1,57 @@
+baseURL = "https://neiderolaya26.github.io/"
+title = "Neider Andrés Olaya F."
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+enableGitInfo = false
+canonifyURLs = false
+
+[pagination]
+  pagerSize = 9
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
+
+[params]
+  author = "Neider Andrés Olaya F."
+  role = "Data Scientist – Credit Risk & Machine Learning"
+  description = "Data Scientist specialized in credit risk, machine learning, and financial analytics for fintech and banking."
+  email = "nolaya_26@hotmail.com"
+  github = "https://github.com/neiderolaya26"
+  linkedin = "https://www.linkedin.com/in/neider-olaya/"
+  resume = "/cv/neider-olaya-cv.pdf"
+  socialImage = "/images/og-neider-olaya.png"
+  themeColor = "#0f7777"
+
+[languages]
+  [languages.en]
+    locale = "en-US"
+    label = "English"
+    weight = 1
+    title = "Neider Olaya | Data Scientist, Credit Risk & ML"
+    [languages.en.params]
+      description = "Data Scientist specialized in credit risk, machine learning, and financial analytics for fintech and banking."
+
+  [languages.es]
+    locale = "es-CO"
+    label = "Español"
+    weight = 2
+    title = "Neider Olaya | Data Scientist, Riesgo de Crédito y ML"
+    [languages.es.params]
+      description = "Data Scientist especializado en riesgo de crédito, machine learning y analítica financiera para fintech y banca."

@@ -1,0 +1,96 @@
+{{ define "main" }}
+{{ $isES := eq site.Language.Lang "es" }}
+{{ $copy := index hugo.Data.portfolio site.Language.Lang }}
+
+{{ if eq .Section "work" }}
+<section class="viewport-page work-view" aria-labelledby="work-title">
+  <div class="shell viewport-shell">
+    <header class="compact-page-header">
+      <div><p class="eyebrow">{{ $copy.work.eyebrow }}</p><h1 id="work-title">{{ $copy.work.title }}</h1></div>
+      <p>{{ $copy.work.description }}</p>
+    </header>
+    <div class="work-grid compact-work-grid">
+      {{ range $index, $page := .Pages.ByWeight }}
+        <a class="work-card compact-work-card" href="{{ $page.RelPermalink }}">
+          <div class="card-top">
+            <span class="card-number">0{{ add $index 1 }} / {{ $page.Params.category }}</span>
+            <h3>{{ $page.Title }}</h3>
+            <p>{{ $page.Description }}</p>
+          </div>
+          <div class="card-bottom">
+            <div class="metric"><strong>{{ $page.Params.metric }}</strong><span>{{ $page.Params.metric_label }}</span></div>
+            <span class="card-link">{{ $copy.work.link }} <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ else if eq .Section "experience" }}
+<section class="viewport-page experience-view" aria-labelledby="experience-title">
+  <div class="shell viewport-shell">
+    <div class="experience-stage">
+      <header class="experience-summary">
+        <p class="eyebrow">{{ $copy.experience.eyebrow }}</p>
+        <h1 id="experience-title">{{ $copy.experience.title }}</h1>
+        <p>{{ $copy.experience.description }}</p>
+      </header>
+      <div class="timeline compact-timeline">
+        {{ range $copy.experience.roles }}
+        <article class="role">
+          <div class="role-meta"><span>{{ .company }}</span><span>{{ .dates }}</span></div>
+          <h3>{{ .title }}</h3>
+          <p>{{ .summary }}</p>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ else if eq .Section "expertise" }}
+<section class="viewport-page expertise-view" aria-labelledby="expertise-title">
+  <div class="shell viewport-shell">
+    <header class="compact-page-header">
+      <div><p class="eyebrow">{{ $copy.expertise.eyebrow }}</p><h1 id="expertise-title">{{ $copy.expertise.title }}</h1></div>
+      <p>{{ $copy.expertise.description }}</p>
+    </header>
+    <div class="expertise-list">
+      {{ range $index, $item := $copy.expertise.items }}
+      <article class="expertise-row">
+        <span>0{{ add $index 1 }}</span>
+        <div><h3>{{ $item.title }}</h3><p>{{ $item.description }}</p></div>
+        <ul class="capability-list">
+          {{ range $item.capabilities }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <div class="expertise-evidence">
+          <strong>{{ $item.proof_value }}</strong>
+          <span>{{ $item.proof_label }}</span>
+        </div>
+        <a class="expertise-link" href="{{ $item.case_url | relURL }}">{{ $item.case_title }} <span aria-hidden="true">↗</span></a>
+      </article>
+      {{ end }}
+    </div>
+    <div class="stack-line" aria-label="{{ if $isES }}Stack técnico{{ else }}Technical stack{{ end }}">
+      {{ range $copy.expertise.stack }}<span>{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</section>
+
+{{ else }}
+<header class="page-hero page-hero-clean">
+  <div class="shell"><p class="eyebrow">{{ if $isES }}Portafolio{{ else }}Portfolio{{ end }}</p><h1>{{ .Title }}</h1><p>{{ .Description }}</p></div>
+</header>
+<section class="list-page">
+  <div class="shell list-grid">
+    {{ range .Pages.ByWeight }}
+      <a class="work-card" href="{{ .RelPermalink }}">
+        <div class="card-top"><span class="card-number">{{ .Params.category | default .Params.kind }}</span><h3>{{ .Title }}</h3><p>{{ .Description }}</p></div>
+        <span class="card-link">{{ if $isES }}Leer más{{ else }}Read more{{ end }} <span aria-hidden="true">↗</span></span>
+      </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

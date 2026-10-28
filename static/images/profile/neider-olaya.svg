@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="1024" viewBox="0 0 768 1024" role="img" aria-label="Neider Olaya">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f7777"/>
+      <stop offset="1" stop-color="#073f40"/>
+    </linearGradient>
+  </defs>
+  <rect width="768" height="1024" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="2">
+    <circle cx="384" cy="470" r="250"/><circle cx="384" cy="470" r="320"/><circle cx="384" cy="470" r="390"/>
+  </g>
+  <polyline points="110,800 210,760 300,780 390,700 480,720 570,620 660,600" fill="none" stroke="#d99b4a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="384" y="540" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="230" letter-spacing="-8">NO</text>
+  <text x="384" y="900" text-anchor="middle" fill="#ffffff" fill-opacity=".8" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="6">CREDIT RISK · ML</text>
+</svg>

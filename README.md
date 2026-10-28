@@ -2,6 +2,11 @@
 
 Portafolio bilingüe (inglés/español) de Neider Andrés Olaya F., Data Scientist en riesgo de crédito, machine learning y analítica financiera.
 
+**Página en línea:** https://neiderolaya26.github.io (español: https://neiderolaya26.github.io/es/)
+
+- CV en PDF: https://neiderolaya26.github.io/cv/neider-olaya-cv.pdf
+- LinkedIn: https://www.linkedin.com/in/neider-olaya/
+
 Sitio Hugo ligero y sin dependencias de tema, basado en la estructura del portafolio de [Sergio A. Mora Pardo](https://github.com/sergiomorapardo/sergiomorapardo.github.io).
 
 ## Desarrollo local

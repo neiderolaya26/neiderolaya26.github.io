@@ -1,6 +1,6 @@
 ---
 title: "Credit Risk Agent Lab"
-description: "An end-to-end credit decision system built on public Lending Club data: risk, prepayment and loss models, a limit and pricing engine tested with causal inference, and an AI agent that decides, audits itself, and writes the credit memo with no human in the loop."
+description: "An end-to-end credit decision system built on public Lending Club data: risk, prepayment and loss models, a limit and pricing engine tested with causal inference, and an AI agent that decides, audits itself, and writes the credit memo, while an analyst signs off every rejection and counteroffer."
 translationKey: "credit-risk-agent-lab"
 weight: 4
 category: "Personal project · Credit risk + AI agents"
@@ -18,13 +18,14 @@ Can a public dataset alone support an end-to-end system that makes **better appr
 
 ## What I built
 
-- **Risk:** six models (logistic scorecard, Random Forest, XGBoost, LightGBM, and two neural networks) tuned with Bayesian optimization and validated out of time. The recalibrated LightGBM champion beats Lending Club's score using only public application data (AUC difference 95% CI [+0.0016; +0.0063]).
+- **Risk:** six models (logistic scorecard, Random Forest, XGBoost, LightGBM, and two neural networks) tuned with Bayesian optimization and validated out of time. The recalibrated LightGBM champion beats Lending Club's score using only public application data (AUC difference 95% CI [+0.0016; +0.0063]). At the same 20% rejection rate, it adds **USD 337k of realized profit per 10,000 applications** (95% CI [272k; 408k]) by not rejecting expensive but good loans.
 - **Approval:** an expected-utility policy that keeps the same profit as a PD cutoff with a better ROI (6.30%) and lower default.
 - **Prepayment and loss:** a discrete-time survival model for prepayment and an economic-loss model; the classic LGD model had no signal.
 - **Limit and pricing:** a simulator over amount × rate with a 20% payment-to-income cap. Loans Lending Club priced below the suggested rate returned 2.8% against 6.7% for the rest.
 - **Causal inference:** two-way fixed effects, a placebo test, and double machine learning on the effect of the rate on default. The rate–default link turned out to be selection; the placebo failed, so I reported the negative result and added a stress scenario instead of a fake causal effect.
-- **AI agent:** a LangGraph graph with three Claude specialists in parallel, a committee that decides, hard rules in code, and an AI auditor that sends the case back when a number or the policy does not check out. Every figure in the memo comes from a tool that runs the models.
-- **Operations:** an MCP server that exposes the engine's tools, a SQLite log of every run with its real outcome, LangSmith traces, and evals.
+- **AI agent:** a LangGraph graph with three Claude specialists in parallel, a committee that decides, hard rules in code, and an AI auditor that sends the case back when a number or the policy does not check out. Every figure in the memo comes from a tool that runs the models. Only clear approvals go out automatically: rejections and counteroffers pause the graph until an analyst signs or returns them.
+- **Operations:** an MCP server that exposes the engine's tools, a SQLite log of every run with its real outcome, LangSmith traces, evals, pinned dependencies, and tests on GitHub Actions.
+- **Fairness:** the public data has no sex, age or race, so I checked proxies. Calibration stays within ±0.5 points for every housing and region group, and the higher rejection of renters matches their higher real default.
 
 ## Results of the agent
 
@@ -38,6 +39,6 @@ Evaluated on 30 loans with known real outcomes, graded by code and by a separate
 
 - [Repository on GitHub](https://github.com/neiderolaya26/credit-risk-agent-lab)
 - [End-to-end demo notebook](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/notebooks/11_demo_agente.ipynb)
-- [The 20 design decisions and their rationale](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/docs/decisiones.md)
+- [The 21 design decisions and their rationale](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/docs/decisiones.md)
 
 > Personal project built only with public data. It contains no data from any employer or customer.

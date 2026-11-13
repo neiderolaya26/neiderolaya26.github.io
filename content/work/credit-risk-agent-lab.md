@@ -29,7 +29,7 @@ Can a public dataset alone support an end-to-end system that makes **better appr
 ## Value and fairness, measured honestly
 
 - **Backtest on 10,000 applications from 2015:** the policy approves 84.9%, counteroffers 13.8%, and rejects 1.3%. The 15.1% that goes to sign-off means 126 to 202 analyst hours.
-- **Net P&L with assumed costs:** the policy loses USD 0.8M less than approving everything, but **it does not beat a simple subgrade cut** at the same rejection rate. I documented it as a limitation instead of hiding it.
+- **Net P&L with dummy costs (illustrative, not real):** the policy loses USD 0.8M less than approving everything, but **it does not beat a simple subgrade cut** at the same rejection rate. I documented it as a limitation instead of hiding it.
 - **Fairness:** the public data has no sex, age or race, so I checked proxies. Calibration stays within ±0.7 points for every housing and region group, and removing the age proxies costs only 0.0032 of AUC.
 
 ## Results of the agent

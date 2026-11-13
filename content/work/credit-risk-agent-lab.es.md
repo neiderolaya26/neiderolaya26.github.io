@@ -37,6 +37,8 @@ Evaluado en 30 préstamos con resultado real conocido, calificado con código y 
 
 ## Enlaces
 
+- [Pruébalo: demo en vivo del motor de decisión](https://credit-risk-agent-lab.streamlit.app/)
+- [Modelos y ficha en Hugging Face](https://huggingface.co/neiderolaya26/credit-risk-lending-club)
 - [Repositorio en GitHub](https://github.com/neiderolaya26/credit-risk-agent-lab)
 - [Notebook con la demo de punta a punta](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/notebooks/11_demo_agente.ipynb)
 - [Las 21 decisiones de diseño y su porqué](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/docs/decisiones.md)

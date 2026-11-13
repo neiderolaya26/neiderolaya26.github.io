@@ -37,6 +37,8 @@ Evaluated on 30 loans with known real outcomes, graded by code and by a separate
 
 ## Links
 
+- [Try it: live demo of the decision engine](https://credit-risk-agent-lab.streamlit.app/)
+- [Models and model card on Hugging Face](https://huggingface.co/neiderolaya26/credit-risk-lending-club)
 - [Repository on GitHub](https://github.com/neiderolaya26/credit-risk-agent-lab)
 - [End-to-end demo notebook](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/notebooks/11_demo_agente.ipynb)
 - [The 21 design decisions and their rationale](https://github.com/neiderolaya26/credit-risk-agent-lab/blob/main/docs/decisiones.md)

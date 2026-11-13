@@ -29,7 +29,7 @@ tags: ["LightGBM", "XGBoost", "PyTorch", "Análisis de supervivencia", "Inferenc
 ## Valor y equidad, medidos sin maquillaje
 
 - **Backtest de 10.000 solicitudes de 2015:** la política aprueba 84,9%, contraoferta 13,8% y rechaza 1,3%. El 15,1% va a firma, entre 126 y 202 horas de analista.
-- **P&L neto con costos supuestos:** la política pierde USD 0,8 M menos que aprobar todo, pero **no le gana a un corte simple por subgrado** con el mismo rechazo. Lo dejé documentado como límite en vez de esconderlo.
+- **P&L neto con costos dummy (ilustrativos, no reales):** la política pierde USD 0,8 M menos que aprobar todo, pero **no le gana a un corte simple por subgrado** con el mismo rechazo. Lo dejé documentado como límite en vez de esconderlo.
 - **Equidad:** los datos públicos no traen sexo, edad ni raza, así que revisé proxies. La calibración queda dentro de ±0,7 puntos por grupo de vivienda y región, y quitar los proxies de edad cuesta solo 0,0032 de AUC.
 
 ## Resultados del agente
